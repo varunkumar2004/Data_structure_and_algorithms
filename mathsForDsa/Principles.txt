@@ -1,0 +1,7 @@
+Pigeon hole Principle:
+    If n+1 objects are placed into n boxes, then at least one box contains two or more objects.
+    If 'n' pigeon hole are occupied by kn + 1 or more then atleast one pigeon hole contains k + 1 or more pigeons.
+    
+Catalon Number:
+    In combinatorics, the Catalan numbers form a sequence of natural numbers that occur in various counting problems, often involving recursively-defined objects.
+    Formula -> Cn = (2n)! / ((n+1)! * n!)
