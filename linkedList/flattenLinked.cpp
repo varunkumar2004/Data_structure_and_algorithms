@@ -33,19 +33,12 @@ node* createChildNode(node *&tail, int data) {
 }
 
 node* merge(node* a, node* b) {
- 
-    // If first linked list is empty then second
-    // is the answer
     if (a == NULL)
         return b;
- 
-    // If second linked list is empty then first
-    // is the result
+        
     if (b == NULL)
         return a;
- 
-    // Compare the data members of the two linked
-    // lists and put the larger one in the result
+        
     node* result;
  
     if (a->data < b->data) {
