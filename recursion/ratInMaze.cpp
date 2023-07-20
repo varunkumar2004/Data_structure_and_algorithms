@@ -87,16 +87,19 @@ vector<string> findPath(vector<vector<int>> &m, int n)
     return ans;
 }
 
-int main()
-{
+int main() {
     vector<string> str;
-    vector<vector<int>> m = {{1, 0, 0, 0}, {1, 1, 0, 1}, {1, 1, 0, 0}, {0, 1, 1, 1}};
+    vector<vector<int>> m;
+    m.push_back({1, 0, 0, 0});
+    m.push_back({1, 1, 0, 0});
+    m.push_back({1, 1, 0, 0});
+    m.push_back({0, 1, 1, 1});
+
     int n = m.size();
     str = findPath(m, n);
 
-    for (int i = 0; i < n; i++)
-    {
-        cout << str[i] << " ";
+    for (auto i: str) {
+        cout << i;
     }
 
     return 0;

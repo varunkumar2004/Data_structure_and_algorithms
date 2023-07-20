@@ -1,128 +1,116 @@
 #include <iostream>
 using namespace std;
 
-// Time Complexity => O(L) for insertion, deletion, searching 
+// Time Complexity => O(L) for insertion, deletion, searching
 // L => length of the word
 class TrieNode {
 public:
-    char data;
-    TrieNode* children[26];
-    bool isTerminal;
+  char data;
+  TrieNode *children[26];
+  bool isTerminal;
 
-    TrieNode(char ch) {
-        data = ch;
-        for (int i = 0; i < 26; i++) {
-            children[i] = NULL;
-        }
-
-        isTerminal = false;
+  TrieNode(char ch) {
+    data = ch;
+    for (int i = 0; i < 26; i++) {
+      children[i] = NULL;
     }
+
+    isTerminal = false;
+  }
 };
 
 class Trie {
 public:
-    TrieNode* root;
+  TrieNode *root;
 
-    Trie() {
-        root = new TrieNode('\0');
+  Trie() { root = new TrieNode('\0'); }
+
+  void insertUtil(TrieNode *root, string word) {
+    // base case
+    if (word.length() == 0) {
+      root->isTerminal = true;
+      return;
     }
 
-    void insertUtil(TrieNode* root, string word) {
-        // base case
-        if (word.length() == 0) {   
-            root->isTerminal = true;
-            return;
-        }
+    // assuming the word in CAPS
+    int index = word[0] - 'A';
+    TrieNode *child;
 
-        // assuming the word in CAPS
-        int index = word[0] - 'A';
-        TrieNode* child;
-
-        if (root->children[index] != NULL) {
-            child = root->children[index];
-        } else {
-            child = new TrieNode(word[0]);
-            root->children[index] = child;
-        }
-
-        insertUtil(child, word.substr(1));
-    }
-    
-    void insertWord(string word) {
-        insertUtil(root, word);
+    if (root->children[index] != NULL) {
+      child = root->children[index];
+    } else {
+      child = new TrieNode(word[0]);
+      root->children[index] = child;
     }
 
-    bool searchUtil(TrieNode* root, string word) {
-        if (word.length() == 0) {
-            return root->isTerminal;
-        } 
+    insertUtil(child, word.substr(1));
+  }
 
-        int index = word[0] - 'A';
-        TrieNode* child;
+  void insertWord(string word) { insertUtil(root, word); }
 
-        if (root->children[index] != NULL) {
-            child = root->children[index];
-        } else {
-            return false;
-        }
-
-        return searchUtil(child, word.substr(1));
+  bool searchUtil(TrieNode *root, string word) {
+    if (word.length() == 0) {
+      return root->isTerminal;
     }
 
-    bool searchWord(string word) {
-        return searchUtil(root, word);
+    int index = word[0] - 'A';
+    TrieNode *child;
+
+    if (root->children[index] != NULL) {
+      child = root->children[index];
+    } else {
+      return false;
     }
 
-    void removeUtil(TrieNode* root, string word) {
-        if (word.length() == 0) {
-            if (root->isTerminal) {
-                root->isTerminal = false;
-            }
+    return searchUtil(child, word.substr(1));
+  }
 
-            delete root;
-            root = NULL;
+  bool searchWord(string word) { return searchUtil(root, word); }
 
-            return;
-        }
+  void removeUtil(TrieNode *root, string word) {
+    if (word.length() == 0) {
+      if (root->isTerminal) {
+        root->isTerminal = false;
+      }
 
-        int index = word[0] - 'A';
-        TrieNode* child;
+      delete root;
+      root = NULL;
 
-        if (root->children[index] != NULL) {
-            child = root->children[index];
-        } else {
-            return;
-        }
-
-        removeUtil(child, word.substr(1));
+      return;
     }
 
-    void removeWord(string word) { 
-        removeUtil(root, word);
+    int index = word[0] - 'A';
+    TrieNode *child;
+
+    if (root->children[index] != NULL) {
+      child = root->children[index];
+    } else {
+      return;
     }
 
-    bool prefixUtil(TrieNode* root, string word) {
-        if (word.length() == 0) {
-            return true;
-        } 
+    removeUtil(child, word.substr(1));
+  }
 
-        int index = word[0] - 'A';
-        TrieNode* child;
+  void removeWord(string word) { removeUtil(root, word); }
 
-        if (root->children[index] != NULL) {
-            child = root->children[index];
-        } else {
-            return false;
-        }
-
-        return prefixUtil(child, word.substr(1));
+  bool prefixUtil(TrieNode *root, string word) {
+    if (word.length() == 0) {
+      return true;
     }
 
-    bool startsWith(string prefix) {
-        return prefixUtil(root, prefix);
+    int index = word[0] - 'A';
+    TrieNode *child;
+
+    if (root->children[index] != NULL) {
+      child = root->children[index];
+    } else {
+      return false;
     }
+
+    return prefixUtil(child, word.substr(1));
+  }
+
+  bool startsWith(string prefix) { return prefixUtil(root, prefix); }
 };
 
-int main() {
-    return 0;
-}
+int main() { return 0; }
