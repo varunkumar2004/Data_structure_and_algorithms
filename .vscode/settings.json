@@ -12,6 +12,7 @@
         "stacktrace": "cpp",
         "regex": "cpp",
         "valarray": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "queue": "cpp"
     }
 }
