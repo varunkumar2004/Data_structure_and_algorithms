@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-// Time Complexity -> O(n)
+// Time Complexity -> O(n^2)
 // Stable Algorithm
 void insertionSort(vector<int> &arr) {
     int n = arr.size();

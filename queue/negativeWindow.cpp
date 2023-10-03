@@ -47,5 +47,10 @@ int main() {
     vector<long long> v;
 
     v = findNegative(A, 5, 2);
+    for (auto i: v) {
+        cout << i << " ";
+    }
+
+    cout << endl;
     return 0;
 }

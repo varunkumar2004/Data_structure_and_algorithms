@@ -30,6 +30,8 @@ int solve(int *arr, int n, int k) {
             mini.pop_front();
         }
     }
+
+    return ans;
 }
 
 int main() {

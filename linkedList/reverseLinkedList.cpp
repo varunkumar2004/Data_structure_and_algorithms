@@ -59,7 +59,34 @@ Node *reverseLinkedList(Node *head)
     return prev;
 }
 
+void insertAtTail(Node *&tail, int d)
+{
+    Node *temp = new Node(d);
+    tail->next = temp;
+    tail = temp;
+}
+
+void print(Node *&head)
+{
+    Node *temp = head;
+
+    while (temp != NULL)
+    {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+
+    cout << endl;
+}
+
 int main()
 {
+    Node* head = new Node(1);
+    Node* tail = head;
+    insertAtTail(tail, 2);
+    insertAtTail(tail, 3);
+
+    head = reverseLinkedList(head);
+    print(head);
     return 0;
 }

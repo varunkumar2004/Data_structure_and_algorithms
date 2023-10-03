@@ -45,6 +45,7 @@ int aggressiveCows(vector<int>& arr, int k) {
         mid = s + (e - s) / 2;
     }
     
+    return ans;
 }
 
 int main() {
