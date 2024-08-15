@@ -46,5 +46,6 @@ bool isBalanced(Node* root) {   // time complexity -> O(n^2)
 }
 
 int main() {
+    Node* root = NULL;
     return 0;
 }

@@ -2,7 +2,7 @@
 #include "../binaryTree/binaryTreeClass.h"
 using namespace std;
 
-// Time Complexity => O(log n)
+// Time Complexity => O(log n) 
 // inorder of binary search tree is sorted => LNR
 Node* insertIntoBST(Node* root, int d) {
     // base case

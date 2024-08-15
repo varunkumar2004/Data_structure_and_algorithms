@@ -36,7 +36,7 @@ public:
             return;
         }
 
-        // step 1 => pust last element into first index
+        // step 1 => put last element into first index
         arr[1] = arr[size];
         size--;
 
@@ -68,14 +68,14 @@ public:
 };
 
 void heapify(int arr[], int n, int i) {
-    int largest = i;
+    int largest = i;    
     int left = 2 * i;
     int right = 2 * i + 1;
 
     if (left < n && arr[largest] < arr[left]) {
         largest = left;
     } else if (right < n && arr[largest] > arr[right]) {
-        right = largest;
+        largest = right;
     }
 
     if (largest != i) {
